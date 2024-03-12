@@ -1,0 +1,17 @@
+
+app/mailers/application_mailer.rb,67
+class ApplicationMailer < ActionMailer::BaseApplicationMailer1,0
+
+app/models/application_record.rb,67
+class ApplicationRecord < ActiveRecord::BaseApplicationRecord1,0
+
+app/jobs/application_job.rb,58
+class ApplicationJob < ActiveJob::BaseApplicationJob1,0
+
+app/controllers/application_controller.rb,78
+class ApplicationController < ActionController::APIApplicationController1,0
+
+config/application.rb,171
+module PlayvalveTestPlayvalveTest21,0
+  class Application < Rails::ApplicationApplication22,0
+  class Application < Rails::ApplicationPlayvalveTest::Application22,0
