@@ -1,24 +1,52 @@
-# README
+## Getting Started
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+### Prerequisites
 
-Things you may want to cover:
+Make sure you have the following installed:
 
-* Ruby version
+- Ruby (version 3.3.0)
+- Ruby on Rails (< version 7.1)
+- PostgreSQL@15
+- Redis
 
-* System dependencies
+### Installation
 
-* Configuration
+1. Clone the repository:
+   ```bash
+   git clone git@github.com:mateoqac/playvalve-test.git
+2. Move to the project directory:
+   ```bash
+   cd playvalve-test
+3. Install dependencies:
+   ```bash
+   bundle install
+4. Set up the database:
+   ```bash
+   rails db:create
+   rails db:migrate
+5. Load some countries into redis:
+   ```ruby
+   rake whitelist:countries
+6. Create your `.env.*` file from `.env.template` and paste your `VPN_API_KEY`
+   ```bash
+   cp .env.template > .env.development
+7. Running the server
+   ```bash
+   rails server
+## API Endpoints
 
-* Database creation
+### User check_status
 
-* Database initialization
+- **Endpoint:** `/api/v1/user/check_status`
+- **Method:** `POST`
+- **Description:** Will return the current ban_status of the give user.
+- **Params:**
+  * `idfa` (required)
+  * `rooted_device` (required)
 
-* How to run the test suite
+## Testing
 
-* Services (job queues, cache servers, search engines, etc.)
+The project includes RSpec tests for the API endpoints. Run the tests with:
 
-* Deployment instructions
-
-* ...
+```bash
+bundle exec rspec
