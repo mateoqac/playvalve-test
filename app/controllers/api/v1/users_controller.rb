@@ -52,6 +52,7 @@ class Api::V1::UsersController < ApplicationController
 
     ip_address = request.headers['CF-Connecting-IP']
     response = VpnApiService.new(ip_address).perform
+
     @vpn_api_response = VpnApiResponse.new(response)
   end
 end

@@ -1,18 +1,18 @@
 class VpnApiResponse < HttpResponse
   def ip
-    parsed_body[:ip]
+    parsed_body['ip']
   end
 
   def country
-    parsed_body[:location][:country]
+    parsed_body['location']['country']
   end
 
   def proxy
-    parsed_body[:security][:proxy] || false
+    parsed_body['security']['proxy'] || false
   end
 
   def vpn
-    parsed_body[:security][:vpn]
+    parsed_body['security']['vpn']
   end
 end
 

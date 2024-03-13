@@ -8,6 +8,8 @@ class SecurityCheckService
 
   def country_whitelisted?
     whitelisted_countries = RedisService.instance.smembers('whitelisted_countries') || []
+    return false unless request.headers['CF-IPCountry'].present?
+
     whitelisted_countries.include?(request.headers['CF-IPCountry'].downcase)
   end
 
