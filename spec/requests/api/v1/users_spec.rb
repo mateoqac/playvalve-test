@@ -3,8 +3,8 @@ require 'rails_helper'
 RSpec.describe 'Api::V1::Users', type: :request do
   describe 'POST /check_status' do
     let(:params) { { idfa:, rooted_device: false } }
-
-    subject(:make_request) { post('/api/v1/users/check_status', params:) }
+    let(:headers) { { 'CF-IPCountry' => 'Argentina' } }
+    subject(:make_request) { post('/api/v1/user/check_status', params:, headers:) }
 
     context 'when user is not found by idfa' do
       let(:idfa) { SecureRandom.uuid }
@@ -29,6 +29,7 @@ RSpec.describe 'Api::V1::Users', type: :request do
         end
       end
     end
+
     context 'when user is found by idfa' do
       let(:idfa) { user.idfa }
       context 'when user is banned' do
