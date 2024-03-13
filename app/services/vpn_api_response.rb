@@ -5,14 +5,20 @@ class VpnApiResponse < HttpResponse
 
   def country
     parsed_body['location']['country']
+  rescue NoMethodError
+    false
   end
 
   def proxy
-    parsed_body['security']['proxy'] || false
+    parsed_body['security']['proxy']
+  rescue NoMethodError
+    false
   end
 
   def vpn
     parsed_body['security']['vpn']
+  rescue NoMethodError
+    false
   end
 end
 

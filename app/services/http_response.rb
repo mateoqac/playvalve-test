@@ -20,13 +20,13 @@ class HttpResponse
   private
 
   def handle_errors(response)
-    case response
-    when Net::HTTPSuccess
-      # Do nothing, success
-    when Net::HTTPForbidden
-      @error_message = "HTTP Forbidden: #{response.code} #{response.message}"
-    else
-      @error_message = "HTTP Error: #{response.code} #{response.message}"
-    end
+    @error_message = case response.code.to_i
+                     when 200
+                       return nil
+                     when 403
+                       "HTTP Forbidden: #{response.code} #{response.message}"
+                     else
+                       "HTTP Error: #{response.code} #{response.message}"
+                     end
   end
 end
